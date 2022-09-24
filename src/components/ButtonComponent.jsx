@@ -1,20 +1,41 @@
-import styles from "./ButtonComponent.module.css";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import styles from "./ButtonComponent.module.css";
 
-const {
-  noVariantProp,
-  noRadiusProp,
-  noBackgroundProp,
-  noSizeProp,
-  outlineVariantProp,
-  fourRadiusProp,
-  eightRadiusProp,
-  redBackgroundProp,
-  orangeBackgroundProp,
-  largeSizeProp,
-  uppercaseProp,
-} = styles;
+export const buttonVariants = {
+  outline: "outline",
+};
+
+export const buttonBorderRadiusses = {
+  "4px": "4px",
+  "8px": "8px",
+};
+
+export const buttonBackgroundColors = {
+  red: "red",
+  orange: "orange",
+};
+
+export const buttonSizes = {
+  large: "large",
+};
+
+const mapButtonVariantsToClassName = {
+  [buttonVariants.outline]: styles.variantOutline,
+};
+
+const mapBorderRadiusToClassName = {
+  [buttonBorderRadiusses["4px"]]: styles.borderRadiusFour,
+  [buttonBorderRadiusses["8px"]]: styles.borderRadiusEight,
+};
+
+const mapBackgroundColorToClassName = {
+  [buttonBackgroundColors.orange]: styles.backgroundColorOrange,
+  [buttonBackgroundColors.red]: styles.backgroundColorRed,
+};
+
+const mapButtonSizesToClassName = {
+  [buttonSizes.large]: styles.sizeLarge,
+};
 
 function Button({
   variant,
@@ -24,56 +45,14 @@ function Button({
   uppercase,
   children,
 }) {
-  const [defaultVariant, setDefaultVariant] = useState(noVariantProp);
-  const [defaultRadius, setDefaultRadius] = useState(noRadiusProp);
-  const [defaultBackground, setDefaultBackground] = useState(noBackgroundProp);
-  const [defaultSize, setDefaultSize] = useState(noSizeProp);
-  const [defaultCase, setDefaultCase] = useState(children);
-
-  useEffect(() => {
-    if (variant === "outline") {
-      setDefaultVariant(outlineVariantProp);
-    } else {
-      setDefaultVariant(noVariantProp);
-    }
-
-    if (borderRadius === "4px") {
-      setDefaultRadius(fourRadiusProp);
-    } else if (borderRadius === "8px") {
-      setDefaultRadius(eightRadiusProp);
-    } else {
-      setDefaultRadius(noRadiusProp);
-    }
-
-    if (backgroundColor === "red") {
-      setDefaultBackground(redBackgroundProp);
-    } else if (backgroundColor === "orange") {
-      setDefaultBackground(orangeBackgroundProp);
-    } else {
-      setDefaultBackground(noBackgroundProp);
-    }
-
-    if (size === "large") {
-      setDefaultSize(largeSizeProp);
-    } else {
-      setDefaultSize(noSizeProp);
-    }
-
-    if (uppercase) {
-      setDefaultCase(uppercaseProp);
-    } else {
-      setDefaultCase(children);
-    }
-  });
-
   return (
     <button
       className={clsx(
-        defaultVariant,
-        defaultRadius,
-        defaultBackground,
-        defaultSize,
-        defaultCase
+        styles.base,
+        variant && mapButtonVariantsToClassName[variant],
+        borderRadius && mapBorderRadiusToClassName[borderRadius],
+        backgroundColor && mapBackgroundColorToClassName[backgroundColor],
+        size && mapButtonSizesToClassName[size]
       )}
     >
       {children}

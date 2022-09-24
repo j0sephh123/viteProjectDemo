@@ -1,45 +1,36 @@
-.noVariantProp {
+.base {
   border: none;
-}
-
-.noRadiusProp {
-  border-radius: none;
-}
-
-.noBackgroundProp {
+  border-radius: 0;
   background-color: #868e96;
-}
-
-.noSizeProp {
   font-size: 16px;
 }
 
-.fourRadiusProp {
-  border-radius: 4px;
-}
-
-.eightRadiusProp {
-  border-radius: 8px;
-}
-
-.redBackgroundProp {
-  background-color: #e64980;
-}
-
-.orangeBackgroundProp {
-  background-color: #fd7e14;
-}
-
-.largeSizeProp {
-  font-size: 20px;
-}
-
-.outlineVariantProp {
+.variantOutline {
   outline-style: solid;
   border: 1px;
   background-color: #fff;
 }
 
-.uppercaseProp {
+.borderRadiusFour {
+  border-radius: 4px;
+}
+
+.borderRadiusEight {
+  border-radius: 8px;
+}
+
+.backgroundColorRed {
+  background-color: #e64980;
+}
+
+.backgroundColorOrange {
+  background-color: #fd7e14;
+}
+
+.sizeLarge {
+  font-size: 20px;
+}
+
+.uppercase {
   text-transform: uppercase;
 }
