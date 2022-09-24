@@ -16,7 +16,7 @@ const {
   uppercaseProp,
 } = styles;
 
-function ButtonComponent({
+function Button({
   variant,
   borderRadius,
   backgroundColor,
@@ -81,4 +81,4 @@ function ButtonComponent({
   );
 }
 
-export default ButtonComponent;
+export default Button;
