@@ -13,6 +13,7 @@ const {
   redBackgroundProp,
   orangeBackgroundProp,
   largeSizeProp,
+  uppercaseProp,
 } = styles;
 
 function ButtonComponent({
@@ -20,12 +21,14 @@ function ButtonComponent({
   borderRadius,
   backgroundColor,
   size,
+  uppercase,
   children,
 }) {
   const [defaultVariant, setDefaultVariant] = useState(noVariantProp);
   const [defaultRadius, setDefaultRadius] = useState(noRadiusProp);
   const [defaultBackground, setDefaultBackground] = useState(noBackgroundProp);
   const [defaultSize, setDefaultSize] = useState(noSizeProp);
+  const [defaultCase, setDefaultCase] = useState(children);
 
   useEffect(() => {
     if (variant === "outline") {
@@ -55,14 +58,22 @@ function ButtonComponent({
     } else {
       setDefaultSize(noSizeProp);
     }
+
+    if (uppercase) {
+      setDefaultCase(uppercaseProp);
+    } else {
+      setDefaultCase(children);
+    }
   });
+
   return (
     <button
       className={clsx(
         defaultVariant,
         defaultRadius,
         defaultBackground,
-        defaultSize
+        defaultSize,
+        defaultCase
       )}
     >
       {children}
